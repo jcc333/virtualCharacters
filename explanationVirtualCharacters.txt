@@ -1,0 +1,80 @@
+*AI For Entertainment*
+**Background**
+
+- mostly a technical class
+- but to what end?
+- what is the dorky crap we can make
+
+...
+
+
+- AND WHYYYYY?
+- "Not trying to make more deadly Halo bots"
+- "Trying to make more authentically anxious, impulsive, terrified Halo bots"
+
+**Affiliative games**
+
+- ELIZA
+- Visual Novels
+- Tamagotchi
+- Dog, Nintendogs
+- Creatures 
+- Japanese Porn Games
+- The Sims
+- We gave a shit about Aerith in FFVII
+
+- "What I'm trying to tell you is that we're going to play with dolls"
+- "Sims with more AI"
+
+***What kinds of interesting/amusing/involving things can we do with AI-based characters?***
+
+- *Interactive dramas*
+- *Dolls a player can use to act out their own stories*
+- *Improv comedy-bot*
+- *Sadistic torture chambers where Sims languish in dread and horror*
+
+***What genres are practical with current technology***
+
+- Drama
+- Comedy
+- Love Stories
+- Japanese Porn Games
+- Adventure
+- Long form/short form
+
+Xtranormal: text -> movie technology
+all good Xtranormal vids are slow burns with a straight man and an idiot
+
+***What are the aesthetic affordances of AI?***
+
+**What we're doing**
+- Prolog
+- Logic/Lambda Calculus
+- Emotion Systems
+- Appraisal Systems
+- Cognitive Architectures
+- SOAR
+- Definite Clause Grammars
+- Montague Semantics
+- Speech Acts
+
+*Prolog*
+- constants == symbols in racket, start with lowercases
+- variables start with '_' or *A-Z*
+- numbers
+- - structures: functor(args,...), where functors are constants
+  - structures are used for procedures/predicates
+  - structures are also used for data
+  - this(is,a,structure)
+  - THIS_isn't(a, structure)
+- prolog is a kb of assertions
+- Propositions i_am_happy
+- Predicates happy(me)
+- Assertions and queries end in '.'
+- Rules:
+  - head :- body
+  - class(C) :- title(C, _)
+
+read book sections 2.1 - 2.4
+do excercise 1
+write something that figures out a basic engineering course I can take that satisfies an area I haven't satisfied.
