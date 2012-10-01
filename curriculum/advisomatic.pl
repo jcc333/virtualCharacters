@@ -1,6 +1,6 @@
 :- dynamic taken/1.
 
-class(X) :- name(X, _).
+class(X) :- title(X, _).
 
 can_take(Course) :-
 	class(Course),
