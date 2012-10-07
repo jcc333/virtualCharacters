@@ -1,0 +1,67 @@
+***Today, we complete Prolog!***
+- no class next week
+- today: metaprolog
+- stuff like that.
+- there's an assignment about stuff
+- no more SWI Prolog
+- Twig
+**Making match table-driven**
+- ?- check_requirements(Reqs).
+- Reqs = 
+  [core:[eecs111,...],
+  systems_breadth:[_1],
+  ai_breadth:[eecs348],
+  theory_breadth:[_2],
+  interfaces_breadth:[eecs351]].
+- requirement(core, 5).
+- etc.
+ 
+ check_requirement(AllReqs):-
+      all_requirements(AllReqs),
+      all_classes_taken(CourseList),
+      match(CourseList, AllReqs).
+  
+  match1(Rs, C):-
+      satisfies(C, R),
+      member(R:List, Rs),
+      member(C, List).
+
+**Reflection in Prolog**
+- relfection allows for metaprogramming
+- self reasoning etc.
+- Taking terms apart (not reflection according to Hoyle, but whatevs)
+- name(?Term, ?Name, ?Arity).
+- Term =.. List
+  lets you go between foo(x, y)=..[foo, x, y]
+- adding clauses to the database
+- DANGER: SIDE EFFECTS
+- :- dynamic +Name/+Arity (declares that the predicate can be modified)
+- asserta(+Clause) 
+  adds Clause to the beginning of the database
+- assert(+Clause)
+- assretz(+Clause)
+  adds Clause to the end of the database
+- use a compiler declaration for asserting things in a predicate
+- Dynamic Programming
+- Memoization. Which is boring.
+- Prolog uses lemma for memoization:
+  
+  lemma(Goal):-
+      call(Goal),
+      asserta(lamma(P)).
+
+**Legitimately Crazy Stuff**
+- clause(+Query, ?Body)
+  - finds the first clause that matches Query :- Body
+  - returns the Body it would run to test that clause
+    - for facts the body is just a call to true
+  - doesn't run the body
+- WRITE LAZY PROLOG! DO IT NOW!
+- why, and why_not, predicates give you explanations.
+- why_not: some goal that should work but doesn't, explains why not.
+Beautiful.
+
+**Next Week**
+- Ian's out of town.
+- read 2.1, 2.2, 2.4, 2.5, 3.1, 3.6, 5.1, 6.1
+- probably an assignment up on Tuesday

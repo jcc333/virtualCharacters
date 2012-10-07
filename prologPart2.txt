@@ -1,0 +1,42 @@
+*Prolog*
+- prolog has wildcards, just like haskell
+- prolog wildcards behave like match*
+- ';' means 'or', essentially
+
+*how lists are represented in prolog*
+- uses conses
+- this entire language is list comprehensions from haskell
+- LinkedList = []
+             | [a, LinkedList]
+             | [a, | (Variable b)]
+- '|' does the work of cdr/tail
+- Binary Trees in prolog
+    -> tree(Node, Left, Right) :-
+           [Node | Left | Right].
+
+*Backtracking*
+- a goal is a fact to try to prove
+- a goal is a pattern matching effort.
+- assertions are processed in order.
+- O(|n|*|m|) time/space? (where n = clauses, and m = rules in the DB)
+    - when a query is issued, it is uninstantiated.
+    - when a match is found, the variable becomes instantiated as a constant and only matches with itself.
+    - when we match conjunctions:
+        - match against the database
+        - and then match against the variables
+        - execution goes left to right
+        - when prolog fails to match, it goes back to its current solved goal and continues searching.
+- so to make prolog programs run quickly, minimize the search space
+- prolog has TCO
+
+*Recursive Rules in Prolog*
+- in haskell:
+     append :: [a] -> [a] -> [a]
+     append = \ xs ys -> xs:ys
+- in prolog though, we have to provide the answer as well:
+     append([], X, X).
+     append([X|XTail], Y, [X|Tail]) :-
+        append(XTail, Y, Tail).
+- prolog has referential transparency 
+- arithmetic in prolog is bullshit
+

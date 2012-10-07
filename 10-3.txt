@@ -1,0 +1,95 @@
+**Fancy, Sexy Prolog Features**
+- Prolog as a Database
+- Prolog as a Procedural Semantics
+- Prolog as an Expression of Logical Semantics
+    -> inaccurate
+    -> Prolog is a fast theorem prover, but not a good theorem prover
+- Try to write as if you're not thinking about the procedural semantics
+- Self-Documenting Prolog is good prolog
+
+*Notating predicates and arguments*
+- name/arity of predicates.
+- for example: +/2 would accept 2 arguments and add them
+- foo/1 and foo/2 are different
+- when you use a compiler delcaration about a prolog predicate:
+    - the compiler needs arity
+    - the predicates are different functions
+- on a good day, prolog can use inputs and outputs interchangably
+- on a bad day, it cannot. Even a little bit.
+
+*good form in comments:*
+- before a predicate definition
+- put +X if the predicate considers inputs.
+- put -X if the predicate considers outputs.
+- put ?X if either is fine.
+
+*Prolog Declarations*
+- prolog used to be easygoing
+- SWI Prolog is a huge whining bitch
+- Compiler declarations can be given when preceded by :-
+- the compiler wants all clauses of predicates to appear in one file, without being interspersed by other clauses.
+    - which is usually, but not always, good practice
+- declarations:
+    - discontiguous name/arity.
+        - I don't care that it's scattered through the file.
+    - multifile name/arity.
+        - I don't care that it's scattered through files.
+
+*cut*
+- cut is the goto of prolog
+- sometimes useful, often hellish
+- if I get this far in the rule, keep going, but if I backtrack from here, fail.
+
+    p :- A, B, !, C.
+
+- if C fails, the call to p fails.
+- cut can be used for efficiency, or basically:
+- cut :: a -> Bool
+
+*advisomatic*
+- let's say you need:
+    - 5 core classes
+    - 5 breadth classes
+
+    match([],_,_,_,_,_).
+    match([Class|MoreClasses],
+          Cores,
+          Systems, AI, Interfaces, Theory):-
+        match_one(Class,
+                  Cores,
+                  Systems, AI, Interfaces, Theory),
+        match(MoreClasses,
+              Cores,
+              Systems, AI, Interfaces, Theory).
+
+- ":-" is called "turnstyle" in English
+- Prolog is referentially transparent as shit.
+
+*more mundane features in Prolog*
+- if/then: (P -> Q;R)
+- Runs P, then either Q if P else R.
+- I/O: call write(+Term) prints Term on the console
+- nl: does newline on the console
+- if you run consult(+File), you load a file
+- reconsult(+File) reloads a file
+- just, don't loop, okay?
+- loops are unreadable to human beings
+- whenever you backtrack over a predicate, you forget local variables.
+- no way to iteratively loop without explicit arguments
+
+*All-Solutions Predicates*
+-findall(-ListElement, :Goal, -List)
+    - simplest all-solution
+    - same solution can appear multiple times if Goal creates it twice
+        - call(:P) calls term P as if it were a goal.
+        - cal(:P, args) = calls P with args added to its argument list
+    - bagof(-ListElement, :Goal, -List) 
+-Maplist: takes a predicate and lists, runs predicate on all lists.
+
+    maplist(:Predicate, +List)
+        -true iff predicate is true of all elements of list
+
+    maplist(:Predicate, +Lists)
+        -true iff relation is true of all elements of all lists
+
+- 
