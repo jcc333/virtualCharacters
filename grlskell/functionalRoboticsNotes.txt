@@ -1,0 +1,35 @@
+***GRL-General Robotics Language***
+- circuit semantics
+- GRL programs are a network of pseudoparallel signals, where
+  -> a signal is updated continuously in theory, but as resources allow in practice
+  -> any signal present at runtime must be a primitive signal:
+    - a constant
+    - a signal source (sensors, effectors)
+    - an application of a primitive proc to a set of signals
+    - an application of a FSTransducer to a set of signals
+      -> where a primitive procedure :: (value -> value)
+      -> where a value :: (Integer, Float, Boolean | Vector)
+      -> where a transducer :: (time_history -> time_history)
+      -> where a transducer has finite state
+    - if the sources, transducers have O(1) time, 
+    - then GRL can run in O(1) space and update in O(1) time
+**example in scheme**
+*a transducer application*
+
+(define-signal door?
+  (> (true-time 
+    (> (max left-reading
+          right-reading)
+      dispatch-thresh))
+    time-thresh))
+
+**haskell equivalent**
+
+openDoor = Signal ((true_time 
+                (\ left right threshold -> ((max left right) > sensor_threshold))) 
+                > time_threshold)
+
+- true_time is a monadic datum.
+- it requires an internal piece of state: 'onset'.
+true_time = \ onset -> do ms_clock <- getTime
+                     , return ms_clock - onset
